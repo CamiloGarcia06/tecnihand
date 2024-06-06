@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_inherit_project_git" model="ir.ui.view">
+        <field name="name">model.name.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="respositorys" string="Respositorys">
+                    <field name="repository_ids" >
+                        <tree string="">
+                            <field name="name" />
+                            <field name="url" />
+                            <field name="state" />
+                            <field name="commit_count" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem name="Project Git"
+        id="menu_git_main"
+        web_icon="static/description/icon.jpg" />
+
+    <menuitem
+        id="menu_git_repository_main"
+        sequence="1"
+        name="Repositorys"
+        action="project_git_repository_action"
+        parent="menu_git_main" />
+
+    <menuitem
+        id="menu_git_commit_main"
+        sequence="2"
+        name="Commits"
+        action="project_git_commit_action"
+        parent="menu_git_main" />
+
+</odoo>

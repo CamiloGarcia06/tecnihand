@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_git_repository_view_tree" model="ir.ui.view">
+        <field name="name">project.git.view.tree</field>
+        <field name="model">project.git.repository</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="url" />
+                <field name="state" />
+                <field name="commit_count" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_git_repository_view_form" model="ir.ui.view">
+        <field name="name">project.git.repository.view.form</field>
+        <field name="model">project.git.repository</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button
+                        string="Activate"
+                        name="button_activate"
+                        type="object"
+                        class="oe_highlight"
+                        groups="project_git.group_repository_manager"
+                        invisible="state=='active'"
+                    />
+                    <button
+                        string="Generate CSV"
+                        name="button_generate_csv"
+                        groups="project_git.group_repository_manager"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Name" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="url" />
+                            <field name="partner_id" />
+                            <field name="largest_contributor" />
+                        </group>
+                        <group>
+                            <field name="days" invisible="1" />
+                            <field name="count_last_commit_date" string="Hours last commit date"
+                                invisible="days == True" />
+                            <field name="count_last_commit_date" string="Days last commit date"
+                                invisible="days == False" />
+                            <field name="commit_count" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="commits" string="Commits">
+                            <field name="commit_ids">
+                                <tree string="">
+                                    <field name="name" />
+                                    <field name="url" widget="url"/>
+                                    <field name="message" />
+                                    <field name="partner_id" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_git_repository_action" model="ir.actions.act_window">
+        <field name="name">Repositorys</field>
+        <field name="res_model">project.git.repository</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

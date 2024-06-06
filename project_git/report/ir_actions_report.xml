@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_project_git_repository">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <t t-call="web.external_layout">
+                        <h2 class="mt-4">
+                            Repository:  <span t-field="doc.name"></span>
+                        </h2>
+                        <div class="row mt-4 mb-2" id="informations">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <strong >Date:</strong>
+                                <span class="m-0" t-field="doc.create_date" t-options='{"widget": "date"}'></span>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <strong>Largest Contributor:</strong><br/>
+                                <span class="m-0" t-field="doc.largest_contributor"></span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Owner</th>
+                                        <th scope="col">Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.commit_ids" t-as="commit">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="commit.create_date" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="commit.partner_id.name" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="commit.message" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_project_git_repository" model="ir.actions.report">
+        <field name="name">Project Git Repository Report</field>
+        <field name="model">project.git.repository</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">project_git.template_project_git_repository</field>
+        <field name="report_file">project_git.template_project_git_repository</field>
+        <field name="print_report_name"></field>
+        <field name="binding_model_id" ref="model_project_git_repository" />
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

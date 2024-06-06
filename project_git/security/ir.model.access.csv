@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_git_repository_manager,project git repository manager,model_project_git_repository,project_git.group_repository_manager,1,1,1,1
+access_project_git_repository_user,project git repository user,model_project_git_repository,base.group_user,1,0,0,0
+access_project_git_commit_manager,project git commit manager,model_project_git_commit,project_git.group_repository_manager,1,1,1,1
+access_project_git_commit_user,project git commit user,model_project_git_commit,base.group_user,1,0,0,0
