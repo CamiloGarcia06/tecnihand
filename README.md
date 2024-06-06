@@ -46,7 +46,7 @@ Pasos
     bash
 
 cd /path/to/odoo/addons
-git clone https://github.com/tu-repo/gestion_repositorios.git
+git clone https://github.com/CamiloGarcia06/tecnihand.git
 
 Actualizar Odoo: Reinicia Odoo y actualiza la lista de módulos.
 
